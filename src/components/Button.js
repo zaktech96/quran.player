@@ -11,10 +11,9 @@ function Button({ handleClick, children }) {
     // <div className="flex flex-col items-center justify-center">
     <div>
       <button
-        className="bg-gray-400 hover:bg-grey-900 text-white font-bold  px-4 py-2 rounded m-2"
+        className="bg-gray-400 hover:bg-grey-900 text-white font-bold  rounded-xl px-4 py-2 m-3"
         onClick={onClick}
       >
-        Button clicked
         {children}
       </button>
     </div>

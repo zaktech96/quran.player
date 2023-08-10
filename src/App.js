@@ -32,17 +32,20 @@ function App() {
       <div className="flex justify-center items-center h-screen">
         {/* Render the first Button component and pass the click handler function */}
         <Button handleClick={handleButtonClick1}>
-          <RiSkipBackLine className="inline-block ml-3 text-2xl" />
+          <RiSkipBackLine className="inline-block mr-2 text-2xl" />
+          rewind
         </Button>
 
         {/* Render the second Button component and include the RiPlayCircleFill icon */}
         <Button handleClick={handleButtonClick2}>
+          play
           {/* Render the RiPlayCircleFill icon with inline-block display, margin, and text size */}
           <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
         </Button>
 
         {/* Render the third Button component and pass the click handler function */}
         <Button handleClick={handleButtonClick3}>
+          Skip
           <RiSkipForwardLine className="inline-block ml-3 text-2xl" />
         </Button>
       </div>
