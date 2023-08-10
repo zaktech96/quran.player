@@ -1,6 +1,6 @@
 // Import the Button component from the correct path
 import Button from "./components/Button";
-import ForestImage from "./Forest.jpg";
+// import ForestImage from "./Forest.jpg";
 // Import the RiPlayCircleFill icon from react-icons/ri
 import {
   RiSkipBackLine,
@@ -27,7 +27,7 @@ function App() {
   // Render the App component
   return (
     <div>
-      <img src={ForestImage} alt="" srcset="" />
+      {/* <img src={ForestImage} alt="" srcset="" /> */}
 
       <div className="flex justify-center items-center h-screen">
         {/* Render the first Button component and pass the click handler function */}
