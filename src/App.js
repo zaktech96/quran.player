@@ -35,6 +35,14 @@ function App() {
           <RiSkipBackLine className="inline-block mr-2 text-2xl" />
           rewind
         </Button>
+        <Button handleClick={handleButtonClick1}>
+          <RiSkipBackLine className="inline-block mr-2 text-2xl" />
+          rewind
+        </Button>
+        <Button handleClick={handleButtonClick1}>
+          <RiSkipBackLine className="inline-block mr-2 text-2xl" />
+          rewind
+        </Button>
 
         {/* Render the second Button component and include the RiPlayCircleFill icon */}
         <Button handleClick={handleButtonClick2}>
