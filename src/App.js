@@ -43,6 +43,17 @@ function App() {
           <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
         </Button>
 
+        <Button handleClick={handleButtonClick2}>
+          play
+          {/* Render the RiPlayCircleFill icon with inline-block display, margin, and text size */}
+          <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
+        </Button>
+        <Button handleClick={handleButtonClick2}>
+          play
+          {/* Render the RiPlayCircleFill icon with inline-block display, margin, and text size */}
+          <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
+        </Button>
+
         {/* Render the third Button component and pass the click handler function */}
         <Button handleClick={handleButtonClick3}>
           Skip
