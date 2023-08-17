@@ -5,11 +5,6 @@ function Button({ handleClick, children }) {
     console.log("Button clicked"); // Log a message to the console when the button is clicked
     handleClick(); // Call the handleClick function provided by the parent component
   };
-   const onClick = () => {
-    console.log("Button clicked"); // Log a message to the console when the button is clicked
-    handleClick(); // Call the handleClick function provided by the parent component
-  };
-
 
   // Render a button element with the onClick event handler
   return (
