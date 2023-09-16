@@ -1,5 +1,8 @@
 // Import the Button component from the correct path
+import Reciters from "./components/Reciters";
+import List from "./components/List";
 import Button from "./components/Button";
+
 // import ForestImage from "./Forest.jpg";
 // Import the RiPlayCircleFill icon from react-icons/ri
 import {
@@ -27,6 +30,8 @@ function App() {
   // Render the App component
   return (
     <div>
+      <Reciters />
+      <List />
       {/* <img src={ForestImage} alt="" srcset="" /> */}
 
       <div className="flex justify-center items-center h-screen">
