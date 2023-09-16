@@ -12,6 +12,9 @@ import {
 } from "react-icons/ri";
 
 function App() {
+  const handleClick = () => {
+    console.log("played");
+  };
   // Define a click handler function for the first button
   const handleButtonClick1 = () => {
     console.log("Button 1 was clicked"); // Log a message to the console when the button is clicked
@@ -29,12 +32,18 @@ function App() {
 
   // Render the App component
   return (
-    <div>
-      <Reciters />
-      <List />
-      {/* <img src={ForestImage} alt="" srcset="" /> */}
-
-      <div className="flex justify-center items-center h-screen">
+    <div className="flex flex-col justify-center items-center h-screen">
+      {/* Audio player */}
+      <audio
+        handleClick={handleClick}
+        controls
+        className=" audio-player px-4 py-2 m-3"
+      >
+        <source src="horse.ogg" type="audio/ogg" />
+        <source src="horse.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <div className="flex">
         {/* Render the first Button component and pass the click handler function */}
         <Button handleClick={handleButtonClick1}>
           <RiSkipBackLine className="inline-block mr-2 text-2xl" />
@@ -54,9 +63,10 @@ function App() {
           <RiSkipForwardLine className="inline-block ml-3 text-2xl" />
         </Button>
       </div>
+      <Reciters />
+      {/* Audio player */}
     </div>
   );
 }
-
 // Export the App component
 export default App;
