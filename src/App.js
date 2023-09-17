@@ -1,7 +1,9 @@
 // Import the Button component from the correct path
-import Reciters from "./components/Reciters";
-import List from "./components/List";
+import Reciters from "./components/Mainscreen";
+import List from "./components/ReciterShow";
 import Button from "./components/Button";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // import ForestImage from "./Forest.jpg";
 // Import the RiPlayCircleFill icon from react-icons/ri
@@ -12,6 +14,17 @@ import {
 } from "react-icons/ri";
 
 function App() {
+  const url = "https://jsonplaceholder.typicode.com/users";
+  const [data, setData] = useState([]);
+
+  const fetchInfo = () => {
+    return axios.get(url).then((res) => setData(res.data));
+  };
+
+  useEffect(() => {
+    fetchInfo();
+  }, []);
+
   const handleClick = () => {
     console.log("played");
   };
