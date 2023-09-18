@@ -1,5 +1,1 @@
-function ReciterList() {
-  return <div>helloo</div>;
-}
-
-export default ReciterList;
+import { useState, useEffect } from "react";
