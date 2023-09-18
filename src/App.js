@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ChapterShow from "./components/ChapterShow";
 import Button from "./components/Button";
 import axios from "axios";
 
@@ -101,6 +102,7 @@ function App() {
         <source type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
+      <ChapterShow surahs={chapters} />
 
       {/* ... (rest of your UI components) */}
     </div>
