@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ChapterShow from "./components/ChapterShow";
+import ReciterShow from "./components/ReciterShow";
 import Button from "./components/Button";
+
 import axios from "axios";
 
 import {
@@ -69,42 +71,47 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      {/* Language selection dropdown */}
-      <select onChange={(e) => handleLanguageChange(e.target.value)}>
-        <option value="" disabled selected>
-          Select Language
-        </option>
-        {languages.map((language) => (
-          <option key={language.id} value={language}>
-            {language.native}
+    <div class="theme-cupcake">
+      <div className="flex flex-col justify-center items-center h-screen">
+        {/* Language selection dropdown */}
+        <select onChange={(e) => handleLanguageChange(e.target.value)}>
+          <option value="" disabled selected>
+            Select Language
           </option>
-        ))}
-      </select>
+          {languages.map((language) => (
+            <option key={language.id} value={language}>
+              {language.native}
+            </option>
+          ))}
+        </select>
 
-      <div className="flex">
-        <Button handleClick={handleButtonClick1}>
-          <RiSkipBackLine className="inline-block mr-2 text-2xl" />
-          rewind
-        </Button>
-        <Button handleClick={handleButtonClick2}>
-          play
-          <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
-        </Button>
-        <Button handleClick={handleButtonClick3}>
-          Skip
-          <RiSkipForwardLine className="inline-block ml-3 text-2xl" />
-        </Button>
+        <div className="flex">
+          <Button handleClick={handleButtonClick1}>
+            <RiSkipBackLine className="inline-block mr-2 text-2xl" />
+            rewind
+          </Button>
+
+          <Button handleClick={handleButtonClick2}>
+            play
+            <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
+          </Button>
+          <Button handleClick={handleButtonClick3}>
+            Skip
+            <RiSkipForwardLine className="inline-block ml-3 text-2xl" />
+          </Button>
+        </div>
+
+        {/* Rest of your UI */}
+        <audio controls className="audio-player px-4 py-2 m-3">
+          <source type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <ChapterShow surahs={chapters} />
+
+        <ReciterShow />
+
+        {/* ... (rest of your UI components) */}
       </div>
-
-      {/* Rest of your UI */}
-      <audio controls className="audio-player px-4 py-2 m-3">
-        <source type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-      <ChapterShow surahs={chapters} />
-
-      {/* ... (rest of your UI components) */}
     </div>
   );
 }
