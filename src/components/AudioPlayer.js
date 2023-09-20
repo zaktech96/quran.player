@@ -1,16 +1,47 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function AudioPlayer({ audioSource }) {
   const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false); // Correct initialization
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    // Add an event listener to handle when the audio is paused
+    audio.addEventListener("pause", () => {
+      setIsPlaying(false);
+    });
+
+    // Add an event listener to handle when the audio is playing
+    audio.addEventListener("play", () => {
+      setIsPlaying(true);
+    });
+
+    // Clean up the event listeners when the component unmounts
+    return () => {
+      audio.removeEventListener("pause");
+      audio.removeEventListener("play");
+    };
+  }, []);
 
   const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+    const audio = audioRef.current;
+
+    if (audio) {
+      if (audio.paused) {
+        audio
+          .play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.error("Error playing audio:", error);
+          });
+      } else {
+        audio.pause();
+        setIsPlaying(false);
+      }
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (

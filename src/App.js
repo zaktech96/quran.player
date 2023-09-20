@@ -107,7 +107,8 @@ function App() {
         <ReciterShow setSelectedReciter={setSelectedReciter} />
 
         {/* Add the AudioPlayer component here */}
-        <AudioPlayer audioSource="https://mp3quran.net/api/v3/radios?language=eng" />
+
+        <AudioPlayer audioSource="https://www.mp3quran.net/api/v3/videos?language=ar" />
       </div>
     </div>
   );
