@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import SearchBar from "./components/SearchBar";
 import ChapterShow from "./components/ChapterShow";
 import ReciterShow from "./components/ReciterShow";
 import Button from "./components/Button";
+import AudioPlayer from "./components/AudioPlayer";
 
 import axios from "axios";
 
@@ -16,6 +18,7 @@ function App() {
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [languages, setLanguages] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [selectedReciter, setSelectedReciter] = useState(null);
 
   useEffect(() => {
     // Fetch available languages and their resources
@@ -71,7 +74,8 @@ function App() {
   };
 
   return (
-    <div class="theme-cupcake">
+    <div>
+      <SearchBar />
       <div className="flex flex-col justify-center items-center h-screen">
         {/* Language selection dropdown */}
         <select onChange={(e) => handleLanguageChange(e.target.value)}>
@@ -84,7 +88,6 @@ function App() {
             </option>
           ))}
         </select>
-
         <div className="flex">
           <Button handleClick={handleButtonClick1}>
             <RiSkipBackLine className="inline-block mr-2 text-2xl" />
@@ -100,17 +103,11 @@ function App() {
             <RiSkipForwardLine className="inline-block ml-3 text-2xl" />
           </Button>
         </div>
-
-        {/* Rest of your UI */}
-        <audio controls className="audio-player px-4 py-2 m-3">
-          <source type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
         <ChapterShow surahs={chapters} />
+        <ReciterShow setSelectedReciter={setSelectedReciter} />
 
-        <ReciterShow />
-
-        {/* ... (rest of your UI components) */}
+        {/* Add the AudioPlayer component here */}
+        <AudioPlayer audioSource="https://mp3quran.net/api/v3/radios?language=eng" />
       </div>
     </div>
   );

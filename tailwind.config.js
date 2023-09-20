@@ -5,6 +5,6 @@ module.exports = {
     extend: {},
   },
   daisyui: {
-    themes: ["luxury"],
+    themes: ["light"],
   },
 };

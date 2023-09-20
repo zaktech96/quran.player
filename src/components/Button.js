@@ -10,7 +10,7 @@ function Buttons({ handleClick, children }) {
   return (
     <div>
       <button
-        className="bg-gray-400 hover:bg-grey-900 text-white font-bold  rounded-xl px-4 py-2 m-3 btn btn-primary"
+        className="bg-gray-400 hover:bg-grey-900 text-white font-bold  rounded-xl px-4 py-2 m-3 btn-primary"
         onClick={onClick}
       >
         {children}
