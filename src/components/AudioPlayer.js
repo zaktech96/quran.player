@@ -1,42 +1,17 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 function AudioPlayer({ audioSource }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-
-    // Add an event listener to handle when the audio is paused
-    audio.addEventListener("pause", () => {
-      setIsPlaying(false);
-    });
-
-    // Add an event listener to handle when the audio is playing
-    audio.addEventListener("play", () => {
-      setIsPlaying(true);
-    });
-
-    // Clean up the event listeners when the component unmounts
-    return () => {
-      audio.removeEventListener("pause");
-      audio.removeEventListener("play");
-    };
-  }, []);
 
   const togglePlay = () => {
     const audio = audioRef.current;
 
     if (audio) {
       if (audio.paused) {
-        audio
-          .play()
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch((error) => {
-            console.error("Error playing audio:", error);
-          });
+        audio.play().then(() => {
+          setIsPlaying(true);
+        });
       } else {
         audio.pause();
         setIsPlaying(false);
@@ -44,13 +19,35 @@ function AudioPlayer({ audioSource }) {
     }
   };
 
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    audio.addEventListener("pause", () => {
+      setIsPlaying(false);
+    });
+
+    audio.addEventListener("play", () => {
+      setIsPlaying(true);
+    });
+
+    return () => {
+      audio.removeEventListener("pause", () => {
+        setIsPlaying(false);
+      });
+
+      audio.removeEventListener("play", () => {
+        setIsPlaying(true);
+      });
+    };
+  }, []);
+
   return (
     <div>
-      <audio ref={audioRef}>
+      <audio ref={audioRef} controls>
         <source src={audioSource} type="audio/mpeg" />
         Your browser does not support the audio element.
+        <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>
       </audio>
-      <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>
     </div>
   );
 }

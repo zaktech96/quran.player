@@ -15,10 +15,8 @@ import {
 
 function App() {
   const [chapters, setChapters] = useState([]);
-  const [selectedChapter, setSelectedChapter] = useState(null);
   const [languages, setLanguages] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
-  const [selectedReciter, setSelectedReciter] = useState(null);
 
   useEffect(() => {
     // Fetch available languages and their resources
@@ -42,25 +40,6 @@ function App() {
     setSelectedLanguage(language);
   };
 
-  // Function to fetch Quran resources based on selected language
-  const fetchQuranResources = () => {
-    if (selectedLanguage) {
-      const surahUrl = selectedLanguage.surah;
-      const rewayahUrl = selectedLanguage.rewayah;
-      const recitersUrl = selectedLanguage.reciters;
-      const radiosUrl = selectedLanguage.radios;
-      const tafasirUrl = selectedLanguage.tafasir;
-
-      // Make requests to the above URLs and handle the data as needed
-      // Example:
-      // axios.get(surahUrl).then((response) => {
-      //   // Handle Quran chapters data in the selected language
-      // });
-
-      // You can make similar requests for other Quran resources.
-    }
-  };
-
   const handleButtonClick1 = () => {
     console.log("Button 1 was clicked");
   };
@@ -72,6 +51,8 @@ function App() {
   const handleButtonClick3 = () => {
     console.log("Button 3 was clicked");
   };
+
+  const audioSource = "https://api.quran.com/api/v4/chapter_recitations/123";
 
   return (
     <div>
@@ -88,12 +69,15 @@ function App() {
             </option>
           ))}
         </select>
+        {/* Render the AudioPlayer component with audioSource */}
+        <div>
+          <AudioPlayer audioSource={audioSource} />
+        </div>
         <div className="flex">
           <Button handleClick={handleButtonClick1}>
             <RiSkipBackLine className="inline-block mr-2 text-2xl" />
             rewind
           </Button>
-
           <Button handleClick={handleButtonClick2}>
             play
             <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
@@ -104,11 +88,7 @@ function App() {
           </Button>
         </div>
         <ChapterShow surahs={chapters} />
-        <ReciterShow setSelectedReciter={setSelectedReciter} />
-
-        {/* Add the AudioPlayer component here */}
-
-        <AudioPlayer audioSource="https://www.mp3quran.net/api/v3/videos?language=ar" />
+        <ReciterShow /> {/* Remove setSelectedReciter */}
       </div>
     </div>
   );

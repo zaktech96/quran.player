@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-
 // Define your SVG code as a string
 const svgString = `
   <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 32 32" id="quran">
