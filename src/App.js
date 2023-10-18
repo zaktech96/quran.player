@@ -17,6 +17,8 @@ function App() {
   const [chapters, setChapters] = useState([]);
   const [languages, setLanguages] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [audioSource, setAudioSource] = useState("your-audio-source.mp3");
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     // Fetch available languages and their resources
@@ -52,7 +54,7 @@ function App() {
     console.log("Button 3 was clicked");
   };
 
-  const audioSource = "https://api.quran.com/api/v4/chapter_recitations/123";
+  // const audioSource = "https://api.quran.com/api/v4/chapter_recitations/123";
 
   return (
     <div>
@@ -89,6 +91,10 @@ function App() {
         </div>
         <ChapterShow surahs={chapters} />
         <ReciterShow /> {/* Remove setSelectedReciter */}
+      </div>
+      <div className="App">
+        {/* You can pass the styles or classes as props to the AudioPlayer component */}
+        <AudioPlayer audioSource={audioSource} isPlaying={isPlaying} />
       </div>
     </div>
   );
