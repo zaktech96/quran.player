@@ -19,6 +19,25 @@ function App() {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [audioSource, setAudioSource] = useState("your-audio-source.mp3");
   const [isPlaying, setIsPlaying] = useState(false);
+  const [selectedReciter, setSelectedReciter] = useState(null);
+  const [selectedSurah, setSelectedSurah] = useState(null);
+
+  useEffect(() => {
+    console.log("selected:", selectedReciter);
+    async function fetchChapters() {
+      try {
+        const response = await axios.get(
+            `https://api.quran.com/api/v4/chapter_recitations/${selectedReciter.id}?language=en`
+        )
+        // console.log(response.data)
+        const chaptersData = response.data.chapters;
+        setChapters(chaptersData);
+      } catch (error) {
+        console.error("An error occurred while fetching chapters:", error);
+      }
+    }
+    fetchChapters();
+  }, [selectedReciter]);
 
   useEffect(() => {
     // Fetch available languages and their resources
@@ -54,12 +73,13 @@ function App() {
     console.log("Button 3 was clicked");
   };
 
-  // const audioSource = "https://api.quran.com/api/v4/chapter_recitations/123";
-
   return (
     <div>
       <SearchBar />
-      <div className="flex flex-col justify-center items-center h-screen">
+      <div className="flex justify-center items-center p-8 mt-16 font-bold">
+        {selectedReciter ? "Selected Reciter: " + selectedReciter.name : "No Reciter Selected"}
+      </div>
+      <div className="flex flex-col justify-center items-center mt-32">
         {/* Language selection dropdown */}
         <select onChange={(e) => handleLanguageChange(e.target.value)}>
           <option value="" disabled selected>
@@ -89,12 +109,13 @@ function App() {
             <RiSkipForwardLine className="inline-block ml-3 text-2xl" />
           </Button>
         </div>
-        <ChapterShow surahs={chapters} />
-        <ReciterShow /> {/* Remove setSelectedReciter */}
-      </div>
-      <div className="App">
-        {/* You can pass the styles or classes as props to the AudioPlayer component */}
-        <AudioPlayer audioSource={audioSource} isPlaying={isPlaying} />
+        {selectedReciter ? <ChapterShow setSelectedSurah={setSelectedSurah} selectedReciter={selectedReciter}/> : (
+          <div>
+            Please select a Reciter from the dropdown menu
+          </div>
+          )
+        }
+        <ReciterShow setSelectedReciter={setSelectedReciter} />
       </div>
     </div>
   );

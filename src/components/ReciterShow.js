@@ -17,6 +17,7 @@ function ReciterShow({ setSelectedReciter }) {
         // Check if the response is successful (status code 200)
         if (response.status === 200) {
           const reciterData = response.data.reciters;
+          console.log(reciterData)
           // Set the reciters in state
           setReciters(reciterData);
         } else {
@@ -46,7 +47,7 @@ function ReciterShow({ setSelectedReciter }) {
           {reciters.map((reciter) => (
             <li
               key={reciter.id}
-              className="reciter-item"
+              className="reciter-item hover:font-bold"
               onClick={() => setSelectedReciter(reciter)}
             >
               {reciter.name}

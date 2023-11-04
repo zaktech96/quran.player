@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-function ChapterShow() {
+function ChapterShow({setSelectedSurah, selectedReciter }) {
   const [surahs, setSurahs] = useState([]);
+
+  const handleSurahClick = (e) => {
+    console.log(e.target.value)
+    setSelectedSurah(e.target.value)
+
+  //   Call the api for the selected surah and the selected reciter
+  }
 
   useEffect(() => {
     async function fetchSurahs() {
@@ -30,7 +37,13 @@ function ChapterShow() {
       <ul className="max-h-48 overflow-y-auto p-2 border rounded">
         {surahs.map((surah) => (
           <li key={surah.id} className="text-lg py-2 border-b last:border-b-0">
-            {surah.name}
+            <button
+                className="outline rounded-xl p-2 hover:bg-slate-100"
+                value={surah.name}
+                onClick={(e) => handleSurahClick(e)}
+            >
+              {surah.name}
+            </button>
           </li>
         ))}
       </ul>
