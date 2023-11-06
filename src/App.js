@@ -97,7 +97,7 @@ function App() {
         </div>
         <div className="flex">
           <Button handleClick={handleButtonClick1}>
-            <RiSkipBackLine className="inline-block mr-2 text-2xl" />
+            <RiSkipBackLine className="inline-block mr-2 text-3xl" />
             rewind
           </Button>
           <Button handleClick={handleButtonClick2}>
