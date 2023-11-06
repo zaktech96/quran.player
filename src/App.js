@@ -97,16 +97,16 @@ function App() {
         </div>
         <div className="flex">
           <Button handleClick={handleButtonClick1}>
-            <RiSkipBackLine className="inline-block mr-2 text-2xl" />
+            <RiSkipBackLine className="inline-block mr-2 text-3xl" />
             rewind
           </Button>
           <Button handleClick={handleButtonClick2}>
             play
-            <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
+            <RiPlayCircleLine className="inline-block ml-3 mr-2 text-2xl" />
           </Button>
           <Button handleClick={handleButtonClick3}>
             Skip
-            <RiSkipForwardLine className="inline-block ml-3 text-2xl" />
+            <RiSkipForwardLine className="inline-block ml-3 mr-2 text-2xl" />
           </Button>
         </div>
         {selectedReciter ? <ChapterShow setSelectedSurah={setSelectedSurah} selectedReciter={selectedReciter}/> : (
