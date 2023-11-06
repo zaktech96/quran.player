@@ -102,7 +102,7 @@ function App() {
           </Button>
           <Button handleClick={handleButtonClick2}>
             play
-            <RiPlayCircleLine className="inline-block ml-3 text-2xl" />
+            <RiPlayCircleLine className="inline-block ml-3 mr-2 text-2xl" />
           </Button>
           <Button handleClick={handleButtonClick3}>
             Skip
