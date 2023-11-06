@@ -106,7 +106,7 @@ function App() {
           </Button>
           <Button handleClick={handleButtonClick3}>
             Skip
-            <RiSkipForwardLine className="inline-block ml-3 text-2xl" />
+            <RiSkipForwardLine className="inline-block ml-3 mr-2 text-2xl" />
           </Button>
         </div>
         {selectedReciter ? <ChapterShow setSelectedSurah={setSelectedSurah} selectedReciter={selectedReciter}/> : (
