@@ -27,8 +27,8 @@ function App() {
     async function fetchChapters() {
       try {
         const response = await axios.get(
-            `https://api.quran.com/api/v4/chapter_recitations/${selectedReciter.id}?language=en`
-        )
+          `https://api.quran.com/api/v4/chapter_recitations/${selectedReciter.id}?language=en`
+        );
         // console.log(response.data)
         const chaptersData = response.data.chapters;
         setChapters(chaptersData);
@@ -76,8 +76,10 @@ function App() {
   return (
     <div>
       <SearchBar />
-      <div className="flex justify-center items-center p-8 mt-16 font-bold">
-        {selectedReciter ? "Selected Reciter: " + selectedReciter.name : "No Reciter Selected"}
+      <div className="flex justify-center items-center p-9 mt-16 font-bold">
+        {selectedReciter
+          ? "Selected Reciter: " + selectedReciter.name
+          : "No Reciter Selected"}
       </div>
       <div className="flex flex-col justify-center items-center mt-32">
         {/* Language selection dropdown */}
@@ -109,12 +111,14 @@ function App() {
             <RiSkipForwardLine className="inline-block ml-3 mr-2 text-2xl" />
           </Button>
         </div>
-        {selectedReciter ? <ChapterShow setSelectedSurah={setSelectedSurah} selectedReciter={selectedReciter}/> : (
-          <div>
-            Please select a Reciter from the dropdown menu
-          </div>
-          )
-        }
+        {selectedReciter ? (
+          <ChapterShow
+            setSelectedSurah={setSelectedSurah}
+            selectedReciter={selectedReciter}
+          />
+        ) : (
+          <div>Please select a Reciter from the dropdown menu</div>
+        )}
         <ReciterShow setSelectedReciter={setSelectedReciter} />
       </div>
     </div>
